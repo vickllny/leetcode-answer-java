@@ -214,6 +214,38 @@ public class ReverseList {
         return head;
     }
 
+
+    public ListNode sortInList (ListNode head) {
+        // write code here
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode prev = head, p1 = head,p2;
+        while ((p2 = p1.next) != null){
+            if(p1.val < p2.val){
+                //交换位置
+                ListNode next = p2.next;
+                prev.next = p2;
+
+            }
+        }
+
+        return head;
+    }
+
+    public int NumberOf1 (int n) {
+        // write code here
+        String string = Integer.toBinaryString(n);
+        int count = 0;
+        char[] chars = string.toCharArray();
+        for (char c : chars) {
+            if(c == '1'){
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1);
         ListNode listNode2 = new ListNode(3);
