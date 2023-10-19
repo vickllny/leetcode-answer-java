@@ -25,8 +25,8 @@ public class LowestBinarySearchTree {
         return treeNode;
     }
 
-
     public static void main(String[] args) {
 
     }
+
 }

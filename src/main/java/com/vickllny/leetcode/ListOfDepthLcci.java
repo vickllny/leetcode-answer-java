@@ -16,7 +16,7 @@ import com.vickllny.common.TreeNode;
 public class ListOfDepthLcci {
 
     public ListNode[] listOfDepth(TreeNode tree) {
-
+        return null;
     }
 
     ListNode[] list(TreeNode tree){
