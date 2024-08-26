@@ -16,7 +16,7 @@ import com.vickllny.common.TreeNode;
 public class ListOfDepthLcci {
 
     public ListNode[] listOfDepth(TreeNode tree) {
-        return null;
+        return list(tree);
     }
 
     ListNode[] list(TreeNode tree){
@@ -24,17 +24,35 @@ public class ListOfDepthLcci {
             return new ListNode[0];
         }
         final List<ListNode> list = new ArrayList<>();
-
-        final ListNode root = new ListNode(tree.val);
-        list.add(root);
-        addNode(list, root, tree.left, tree.right);
-
+        final List<TreeNode> cList = new ArrayList<>();
+        cList.add(tree);
+        addNode(list, cList);
         final ListNode[] node = new ListNode[list.size()];
         return list.toArray(node);
     }
 
-    void addNode(List<ListNode> list, ListNode root, TreeNode left, TreeNode right){
-        list.add(root);
+    void addNode(List<ListNode> list, List<TreeNode> cList){
+        if(cList.isEmpty()){
+            return;
+        }
+        ListNode listNode = null;
+        List<TreeNode> cList1 = new ArrayList<>();
+        for (final TreeNode node : cList) {
+            if(node.left != null){
+                cList1.add(node.left);
+            }
+            if(node.right != null){
+                cList1.add(node.right);
+            }
+            if(listNode == null){
+                listNode = new ListNode(node.val);
+                list.add(listNode);
+                continue;
+            }
+            listNode.next = new ListNode(node.val);
+            listNode = listNode.next;
+        }
+        addNode(list, cList1);
     }
 
 }
